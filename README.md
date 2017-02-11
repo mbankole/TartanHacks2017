@@ -1,5 +1,4 @@
 # TartanHacks2017
-# Bernie 2028
+# PathFindr
 =======
-wow putting shit in
-
+A CMU pathfinding webservice created with python, javascript, css, html, and mysql
