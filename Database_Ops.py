@@ -20,10 +20,10 @@ config = {
 def get_cnx():
     """returns a connection object.
     This could use some further obfuscation for speedups"""
-    # print("connecting to database '" + config['database'] + "' on '" + config['host'] + "'")
+    print("connecting to database '" + config['database'] + "' on '" + config['host'] + "'")
     try:
         cnx = mysql.connector.connect(**config)
-        # print("connected")
+        print("connected")
         return cnx
     except mysql.connector.Error as err:
         if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
@@ -138,7 +138,8 @@ def get_points(cnx):
     for point in cursor:
         data = {
             'name': point[0],
-            'coords' : [point[1], point[2]]
+            'coords' : [point[1], point[2]],
+            'elevation' : point[3]
         }
         info.append(data)
     cursor.close()

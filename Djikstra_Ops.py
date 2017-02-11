@@ -1,70 +1,62 @@
 import numpy as np, math
-nodeVecDict = np.load('nodeVecDict.npy').item()
-distList = np.load('distList.npy').item()[0]
-bigList = np.load('bigList.npy').item()[0]
-relativeDist=200
-def isAdj(name1, name2, dist):
-    name1,name2=name1.strip(),name2.strip()
-    return (name1[0:3]==name2[0:3] or dist<relativeDist)
-def getAdjList(distList):
-    adjList=[]
-    adjDict={}
-    names = nodeVecDict.keys()
-    for name in names:
-        adjDict[name]=[]
-        for dict in distList:
-            if name not in dict: continue
-            if isAdj(name, dict[name],dict['distance']):
-                adjDict[name]=adjDict.get(name)+[dict[name]]
-        adjList+=[adjDict]        
-        adjDict={}
-    return adjList
-adjList=getAdjList(distList)
-def find_path(sourcename):
-    Q = nodeVecDict.keys()
-    unvisited=Q
-    dist={}
-    prev={}
-    for v in Q:
-        dist[v]=math.inf if v!=sourcename else 0
-        prev[v]='~~~' #undefined
-    while len(Q)>=1:
-        u = getMin(dist)
-        Q.pop(u)
-        for dict in adjList:
-            if u in dict:
-                for neighbor in dict[u]:
-                    alt=dict['distance']+dist[u]
-                    if alt<dist[neighbor]:
-                        dist[neighbor]=alt
-                        prev[neighbor]=u
-    return dist, prev
-output=[]
-temp={}
-def getDist(name1, name2):
-    for dict in distList:
-        if name1 in dict and name2==dict[name1]:
-            return dict['distance']
-    raise Exception('no dist???')
+import numpy as np
+import Database_Ops
+import copy
 
-def unfuck(adjList):
-    tempL=[]
-    k=0
-    j=0
-    for bigdict in bigList:
-        for dict in adjList:
-            j+=1
-            for key in dict:
-                for adjName in adjList[j]:
-                    if adjName==bigdict['name']:continue
-                    tempL+=[{'name':adjName, 'distance':getDist(adjName, bigList[k]['name'])}]
-                bigdict['adjacents'] = tempL
-                tempL=[]
-                k+=0
-            j=0
-unfuck(adjList)
-np.save('bigListFIN.npy', bigList) 
+
+def find_paths(start_name, end_name, cnx):
+    #takes in starting node, end node
+    start = Database_Ops.get_location(start_name,cnx)
+    paths = []
+    good_paths = []
+    for adj in start['adjacents']:
+        paths.append([adj['distance'], start_name, adj['name']])
+    new_paths = paths
+    #while finding:
+
+    for i in range(40):
+        old_paths = copy.deepcopy(new_paths)
+        new_paths = []
+        dones = 0
+        for path in old_paths[:]:
+            last = path[-1]
+            if last == 'done':
+                dones += 1
+                if dones > 2:
+                    min_length = good_paths[0][0]
+                    index = 0
+                    for i in range(1, len(good_paths)):
+                        if good_paths[i][0] < min_length:
+                            min_length = good_paths[i][0]
+                            index = i
+                    good_paths[index].pop()
+                    return good_paths[index]
+            else:
+                lastl = Database_Ops.get_location(last, cnx)
+                for adj in lastl['adjacents']:
+                    if adj['name'] not in path:
+                        new_path = copy.deepcopy(path)
+                        new_path[0] += adj['distance']
+                        new_path.append(adj['name'])
+                        if adj['name'] == end_name:
+                            new_path.append("done")
+                            good_paths.append(new_path)
+                        new_paths.append(new_path)
+
+    min_length = good_paths[0][0]
+    index = -1
+    for i in range(1, len(good_paths)):
+        if good_paths[i][0] < min_length:
+            min_length = good_paths[i][0]
+            index = i
+    if index == -1:
+        return None
+    good_paths[index].pop()
+    return good_paths[index]
+
+
 
   
+
 
 

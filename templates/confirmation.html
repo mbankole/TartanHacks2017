@@ -1,0 +1,39 @@
+<!doctype html>
+	<head>
+		<title>RainJeff - Confirmation</title>
+		<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/materialize.css') }}" media="screen,projection"/>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='js/materialize.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='js/init.js') }}"></script>
+		<meta name="theme-color" content="#607d8b">
+	</head>
+    <body background="{{ url_for('static', filename='images/bg.png') }}">
+        <nav class="blue-grey" role="navigation">
+            <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">RainJeff</a>
+				<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="/unsubscribe">Unsubscribe</a></li>
+                </ul>
+                <ul class="side-nav" id="mobile-demo">
+                    <li><a href="/unsubscribe">Unsubscribe</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="section no-pad-bot" id="index-banner">
+            <div class="container">
+                <div class="card">
+                    <div class="row">
+                        <br>
+                        <div class = "col s12 center grey-text">
+						    <i class="large material-icons">done</i>
+                            <h4>You signed up! Hooray!</h4>
+                        </div>
+                        <br>
+			    				</div>
+							</div>
+					</div>
+	  	</div>
+	</body>
+</html>
