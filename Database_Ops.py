@@ -27,6 +27,27 @@ def init(cnx):
     cnx.commit()
 
 
+def add_location(name, lon, lat, adjacents, cnx):
+    """Adds a user to the users table"""
+    for i in range(len(adjacents)):
+        adjacents[i] = adjacents[i]['name'] + " - " + str(adjacents[i]['distance'])
+    # print adjacents
+    adj_text = ", ".join(adjacents)
+    cursor = cnx.cursor()
+    query = "DELETE FROM locations WHERE name = {name}".format(name = name)
+    cursor.execute(query)
+    query = "INSERT INTO locations VALUES ({name}, {longtude}, {latitude}, \"{adj}\")".format(
+        name = name,
+        longtude = lon,
+        latitude = lat,
+        adj = adj_text
+    )
+    # print(query)
+    cursor.execute(query)
+    cursor.close()
+    cnx.commit()
+
+
 def get_locations(cnx):
     cursor = cnx.cursor()
     query = 'SELECT * FROM locations'
@@ -73,6 +94,21 @@ def get_location(name, cnx):
         return data
     cursor.close()
     return None
+
+def add_point(name, lon, lat, cnx):
+    """Adds a user to the users table"""
+    cursor = cnx.cursor()
+    query = "DELETE FROM points WHERE name = {name}".format(name = name)
+    cursor.execute(query)
+    query = "INSERT INTO points VALUES ({name}, {longtude}, {latitude})".format(
+        name = name,
+        longtude = lon,
+        latitude = lat
+    )
+    # print(query)
+    cursor.execute(query)
+    cursor.close()
+    cnx.commit()
 
 
 def get_points(cnx):

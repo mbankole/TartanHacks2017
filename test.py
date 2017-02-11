@@ -7,3 +7,12 @@ for i in range(len(adjacents)):
         'distance': adj_data[1]
     }
 print adjacents
+
+for i in range(len(adjacents)):
+    adjacents[i] = adjacents[i]['name'] + " - " + str(adjacents[i]['distance'])
+print adjacents
+adj_text = ", ".join(adjacents)
+
+print data
+print adj_text
+
