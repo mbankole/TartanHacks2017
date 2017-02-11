@@ -12,11 +12,13 @@ icnx = Database_Ops.get_cnx()
 Database_Ops.init(icnx)
 icnx.close()
 
+#def hello():
+#    list = ["a", "b", "c"]
+#    return render_template("whateveryouwant.html", list = list)
 
 @app.route("/")
 def main():
-    return "HELLLELELELEELELELE"
-
+    return render_template("general.html")
 
 if __name__ == '__main__':
     app.run()
