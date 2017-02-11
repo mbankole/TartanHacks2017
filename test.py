@@ -1,7 +1,12 @@
 import Database_Ops
 import Djikstra_Ops
+
+# import cmu_course_api
+
+#data = cmu_course_api.get_course_data('S')
+#print(data)
 cnx = Database_Ops.get_cnx()
-Database_Ops.init(cnx)
+#Database_Ops.init(cnx)
 """
 Database_Ops.add_location("p1", 335235, 232522.2, [
         {
@@ -118,7 +123,7 @@ Database_Ops.add_location("p9", 335235, 232522.2, [
         ],cnx)"""
 #print(Database_Ops.get_location('p5',cnx))
 #print(Database_Ops.get_locations(cnx))
-path = Djikstra_Ops.find_paths('p5','p8', cnx)
+path = Djikstra_Ops.find_paths('p5','p9', cnx)
 print(path)
 #print(Database_Ops.get_location("WIEGAND", cnx))
 #print(len(Database_Ops.get_location("WIEGAND", cnx)['adjacents']))

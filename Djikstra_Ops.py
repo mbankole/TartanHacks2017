@@ -22,7 +22,7 @@ def find_paths(start_name, end_name, cnx):
             last = path[-1]
             if last == 'done':
                 dones += 1
-                if dones > 1:
+                if dones > 2:
                     min_length = good_paths[0][0]
                     index = 0
                     for i in range(1, len(good_paths)):
