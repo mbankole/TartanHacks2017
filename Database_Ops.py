@@ -76,10 +76,16 @@ def get_locations(cnx):
         adjacents = data.split('|, ')
         for i in range(len(adjacents)):
             adj_data = adjacents[i].split(' |-| ')
-            adjacents[i] = {
-                'name': adj_data[0],
-                'distance': float(adj_data[1])
-            }
+            try:
+                adjacents[i] = {
+                    'name': adj_data[0],
+                    'distance': float(adj_data[1])
+                }
+            except:
+                adjacents[i] = {
+                    'name': adj_data[0],
+
+                }
         data = {
             'name': point[0],
             'coords' : [point[1], point[2]],

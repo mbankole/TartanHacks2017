@@ -4,9 +4,17 @@ import Database_Ops
 import copy
 
 
+def find_location(locations, name):
+    for i in range(len(locations)):
+        if locations[i]['name'] == name:
+            return i
+    return None
+
+
 def find_paths(start_name, end_name, cnx):
     #takes in starting node, end node
-    start = Database_Ops.get_location(start_name,cnx)
+    locations = Database_Ops.get_locations(cnx)
+    start = locations[find_location(locations, start_name)]
     paths = []
     good_paths = []
     for adj in start['adjacents']:
@@ -14,11 +22,12 @@ def find_paths(start_name, end_name, cnx):
     new_paths = paths
     #while finding:
 
-    for i in range(40):
+    for i in range(100):
         old_paths = copy.deepcopy(new_paths)
         new_paths = []
         dones = 0
         for path in old_paths[:]:
+            #print(path)
             last = path[-1]
             if last == 'done':
                 dones += 1
@@ -32,7 +41,7 @@ def find_paths(start_name, end_name, cnx):
                     good_paths[index].pop()
                     return good_paths[index]
             else:
-                lastl = Database_Ops.get_location(last, cnx)
+                lastl = locations[find_location(locations, last)]
                 for adj in lastl['adjacents']:
                     if adj['name'] not in path:
                         new_path = copy.deepcopy(path)

@@ -123,7 +123,7 @@ Database_Ops.add_location("p9", 335235, 232522.2, [
         ],cnx)"""
 #print(Database_Ops.get_location('p5',cnx))
 #print(Database_Ops.get_locations(cnx))
-path = Djikstra_Ops.find_paths('p5','p9', cnx)
+path = Djikstra_Ops.find_paths('WEAN S (q)','RESNIK E', cnx)
 print(path)
 #print(Database_Ops.get_location("WIEGAND", cnx))
 #print(len(Database_Ops.get_location("WIEGAND", cnx)['adjacents']))
