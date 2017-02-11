@@ -1,18 +1,13 @@
-data = 'potato - 3, wow - 5, fuck - 25'
-adjacents = data.split(', ')
-for i in range(len(adjacents)):
-    adj_data = adjacents[i].split(' - ')
-    adjacents[i] = {
-        'name': adj_data[0],
-        'distance': adj_data[1]
-    }
-print adjacents
-
-for i in range(len(adjacents)):
-    adjacents[i] = adjacents[i]['name'] + " - " + str(adjacents[i]['distance'])
-print adjacents
-adj_text = ", ".join(adjacents)
-
-print data
-print adj_text
-
+import Database_Ops
+cnx = Database_Ops.get_cnx()
+Database_Ops.init(cnx)
+Database_Ops.add_location("wow3", 335235, 232522.2, [
+        {
+            'name':'adjacent name',
+            'distance':2525,
+        },
+        {
+            'name':'adjacent name',
+            'distance':2525,
+        }],cnx)
+print(Database_Ops.get_locations(cnx))
