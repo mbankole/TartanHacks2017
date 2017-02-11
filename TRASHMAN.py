@@ -8,11 +8,11 @@ def dist(p1, p2): #haversine
     dW = (p1[1]-p2[1])*cv
     dRo = 2*math.asin(math.sqrt((math.sin(dN/2))**2+
         math.cos(p1[0]*cv)*math.cos(p2[0]*cv)*(math.sin(dW/2))**2))
-    print(dRo)
     return dRo*earthrad
 keys=masterDict.keys()
 for key1 in keys:
     for key2 in keys:
         if key1==key2:continue
         distDict[key1]=dist(masterDict[key1],masterDict[key2]) 
-print(distDict)
+
+np.save('distDict.npy', dict) 
