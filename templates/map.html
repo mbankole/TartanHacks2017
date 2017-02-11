@@ -35,26 +35,37 @@
        </div>
     </nav>
     <div class="col 12 center-align"><a href="/" class="waves-effect waves-light btn"><i class="material-icons right">replay</i>Input Another Schedule</a></div>
-    {% for point in points %}
-    <script>
-        path.push({lat: {{point.longitude}}, lng: {{point.latitude}}});
-    </script>
+    {% for path in points %}
+        <script>
+            path.push(new Array());
+        </script>
+        {% for point in path %}
+            <script>
+                path[path.length - 1].push({lat: {{point.longitude}}, lng: {{point.latitude}}});
+            </script>
+        {% endfor %}
     {% endfor %}
     <div id="map"></div>
     <script>
+        var colors = ['#f44336','#9c27b0','#2196f3','#009688','#8bc34a','#ff9800','#000000','#ffffff']
+
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 40.44259, lng: -79.9433333333333},
           zoom: 17
         });
-        var flightPath = new google.maps.Polyline({
-          path: path,
-          geodesic: true,
-          strokeColor: '#FF0000',
-          strokeOpacity: 1.0,
-          strokeWeight: 2
-        });
-        flightPath.setMap(map);
+        for (var i = 0; i < path.length; i++) {
+            var route = path[i];
+            var routen = new google.maps.Polyline({
+              path: route,
+              geodesic: true,
+              strokeColor: colors[i],
+              strokeOpacity: 1.0,
+              strokeWeight: 2
+            });
+            routen.setMap(map);
+        };
+
         console.log(path[0]);
 
       }

@@ -68,8 +68,8 @@ def main():
         start = buildings[i]
         end = buildings[i+1]
         # print("pathing from " + start + " to " + end)
-        path += [Djikstra_Ops.find_paths(start, end, cnx)[1:-1]]
-    # print(path)
+        path.append(Djikstra_Ops.find_paths(start, end, cnx)[1:-1])
+    print(path)
     session['route'] = path
     return flask.redirect(flask.url_for('map'))
 
@@ -77,18 +77,17 @@ def main():
 def map():
     points_currpath = []
     points=[]
+    paths_data = []
     cnx = Database_Ops.get_cnx()
     paths = session['route']
     print(paths)
-    length = paths[0]
-    path_nodes = paths
     for path in paths:
+        data = []
         for node in path:
             ndata = Database_Ops.get_location(node, cnx)
-            points_currpath.append({'longitude':ndata['coords'][0], 'latitude':ndata['coords'][1]})
-        points.append([points_currpath])
-        points_currpath=[]
-    #print(points)
+            data.append({'longitude':ndata['coords'][0], 'latitude':ndata['coords'][1]})
+        points.append(data)
+    print(points)
     return render_template("map.html", points = points)
 
 
