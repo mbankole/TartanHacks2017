@@ -20,51 +20,27 @@ def getAdjList(distList):
         adjDict={}
     return adjList
 adjList=getAdjList(distList)
-def find_path(sourcename):
-    Q = nodeVecDict.keys()
-    unvisited=Q
-    dist={}
-    prev={}
-    for v in Q:
-        dist[v]=math.inf if v!=sourcename else 0
-        prev[v]='~~~' #undefined
-    while len(Q)>=1:
-        u = getMin(dist)
-        Q.pop(u)
-        for dict in adjList:
-            if u in dict:
-                for neighbor in dict[u]:
-                    alt=dict['distance']+dist[u]
-                    if alt<dist[neighbor]:
-                        dist[neighbor]=alt
-                        prev[neighbor]=u
-    return dist, prev
 output=[]
 temp={}
 def getDist(name1, name2):
     for dict in distList:
         if name1 in dict and name2==dict[name1]:
             return dict['distance']
-    raise Exception('no dist???')
-
+    #raise Exception('no dist???')
 def unfuck(adjList):
-    tempL=[]
-    k=0
-    j=0
-    for bigdict in bigList:
-        for dict in adjList:
-            j+=1
-            for key in dict:
-                for adjName in adjList[j]:
-                    if adjName==bigdict['name']:continue
-                    tempL+=[{'name':adjName, 'distance':getDist(adjName, bigList[k]['name'])}]
-                bigdict['adjacents'] = tempL
-                tempL=[]
-                k+=0
-            j=0
+    for map in adjList:
+        tempD={}
+        for key in map:
+            for adjName in map[key]:
+                tempD={'name':adjName,'distance':getDist(adjName,key)}
+                for dict in bigList:
+                    if dict['name']==key:
+                        dict['adjacents']=dict.get('adjacents')+[tempD] if dict.get('adjacents')!=None else [tempD]
+                        break
+                
 unfuck(adjList)
-np.save('bigListFIN.npy', bigList) 
-
+print(bigList)
+np.save('bigListFIN.npy', {0:bigList}) 
   
 
 
