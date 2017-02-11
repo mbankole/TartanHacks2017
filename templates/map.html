@@ -30,14 +30,11 @@
     </script>
 </head>
 <body>
-    <nav class="blue-grey" role="navigation">
+    <nav class="" role="navigation">
        <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">What's the Shortest Path Between My Classes?</a>
        </div>
     </nav>
-    <!--loading bar?-->
-    <!--map api-->
-    <!--collapsible list of schedule & other info (total distance)?-->
-    <a href="/" class="waves-effect waves-light btn"><i class="material-icons right">replay</i>Input Another Schedule</a>
+    <div class="col 12 center-align"><a href="/" class="waves-effect waves-light btn"><i class="material-icons right">replay</i>Input Another Schedule</a></div>
     {% for point in points %}
     <script>
         path.push({lat: {{point.longitude}}, lng: {{point.latitude}}});
