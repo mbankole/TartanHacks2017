@@ -89,5 +89,5 @@ for vec in output:
             i+=1
 # with open("Output.txt", "w") as text_file:
 #      text_file.write(str(dict))
-np.save('my_file.npy', dict) 
+np.save('nodeVecDict.npy', dict) 
 print(dict)
