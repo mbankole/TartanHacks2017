@@ -25,3 +25,7 @@ function addrow(){
     count++;
     console.log(row);
 }
+
+$(document).ready( function {
+
+});

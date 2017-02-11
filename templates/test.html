@@ -43,6 +43,27 @@
         path.push({lat: {{point.longitude}}, lng: {{point.latitude}}});
     </script>
     {% endfor %}
+    <div class="row">
+        <form class="col s3" action="" method=post enctype=multipart/form-data>
+              <div class="row">
+                    <div class="input-field col s6">
+                          <input id="start" type="text" class="validate" name="start">
+                          <label for="start">Start</label>
+                    </div>
+                    <div class="input-field col s6">
+                          <input id="end" type="text" class="validate" name="end">
+                          <label for="end">End</label>
+                    </div>
+              </div>
+            <div class="row">
+                <div class="col s12">
+                    <button class="btn waves-effect waves-light blue-grey lighten-3" type="submit" name="action" value="upload">Submit
+                    <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
     <div id="map"></div>
     <script>
       function initMap() {
