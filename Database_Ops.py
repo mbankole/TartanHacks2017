@@ -98,7 +98,9 @@ def get_locations(cnx):
 
 def get_location(name, cnx):
     cursor = cnx.cursor()
-    query = 'SELECT * FROM locations WHERE name = "{name}"'.format(name = name)
+    name = name.upper()
+    query = 'SELECT * FROM locations WHERE name = "{name}";'.format(name = name)
+    print(query)
     cursor.execute(query)
     for point in cursor:
         data = point[3]
@@ -154,7 +156,7 @@ def get_points(cnx):
 
 def get_point(name, cnx):
     cursor = cnx.cursor()
-    query = 'SELECT * FROM points WHERE name = "{name}"'.format(name = name)
+    query = 'SELECT * FROM points WHERE  MATCH (name) AGAINST ("{name}" IN NATURAL LANGUAGE MODE);'.format(name = name)
     cursor.execute(query)
     info = []
     for point in cursor:

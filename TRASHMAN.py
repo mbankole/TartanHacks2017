@@ -21,4 +21,4 @@ for key1 in keys:
         tempDict={}
 output={0:tempList}
 np.save('distList.npy', output)
-print(len(output[0])) 
+print(output)
