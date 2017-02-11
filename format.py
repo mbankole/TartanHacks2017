@@ -56,7 +56,6 @@ for val in supe: super+=val
 output=""
 i=0
 dict = {}
-
 cNDEG = 40.44183
 cWDEG = -79.94156
 currname=""
@@ -89,5 +88,10 @@ for vec in output:
             i+=1
 # with open("Output.txt", "w") as text_file:
 #      text_file.write(str(dict))
-np.save('nodeVecDict.npy', dict) 
-print(dict)
+
+bigList=[]
+for name in dict:
+
+    bigList+=[{'name':name,'coords':dict[name]}]
+np.save('nodeVecDict.npy', dict)
+np.save('bigList.npy',{0:bigList}) 
