@@ -39,8 +39,8 @@ def unfuck(adjList):
                         break
                 
 unfuck(adjList)
-print(bigList)
 np.save('bigListFIN.npy', {0:bigList}) 
+print(len(bigList))
   
 
 
