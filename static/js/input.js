@@ -16,7 +16,11 @@ function addrow(){
     row += count;
     row += `><label for="room`;
     row += count;
-    row += `">Room</label></div><div id="button"><a onclick="removebutton();addrow()" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a></div></div>`;
+    row += `">Room</label></div><div id="button">
+                    <div class="col s12 l1 right-align">
+                    <a onclick="removebutton();addrow()" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+                    </div>
+                </div>`;
     $("#newrows").append (row);
     count++;
     console.log(row);
