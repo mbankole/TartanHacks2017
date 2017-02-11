@@ -14,44 +14,52 @@
 </head>
 
 <body>
-    <nav class="blue-grey" role="navigation">
-       <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">What's the Shortest Path Between My Classes?</a>
+    <nav class="" role="navigation">
+       <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo center">What's the Shortest Path Between my Classes?</a>
        </div>
     </nav>
     <div class="container">
-    <h1>Input your schedule</h1>
+<h5 class="center-align">Input Your Schedule:</h5>
     <form class="" action="" method=post enctype=multipart/form-data>
-        <div class="card">
-            <div class="card-content">
+<!--        <div class="card">
+            <div class="card-content">-->
             <div class="row">
-               <div class="inputfield col s6 13">
+               <div class="inputfield col s12 l7">
                     <input id="building1" type="text" class="validate" name=building1>
                     <label for="building1">Building</label>
                </div>
-               <div class="inputfield col s6 13">
+               <div class="inputfield col s12 l4">
                     <input id="room1" type="text" class="validate" name=room1>
                     <label for="room1">Room</label>
                 </div>
+
             </div>
             <div class="row">
-               <div class="inputfield col s6 13">
+               <div class="inputfield col s12 l7">
                      <input id="building2" type="text" class="validate" name=building2>
                      <label for="building2">Building</label>
                </div>
-               <div class="inputfield col s6 13">
+               <div class="inputfield col s12 l4">
                     <input id="room2" type="text" class="validate" name=room2>
                     <label for="room2">Room</label>
+                </div>
+                <div id="button">
+                    <div class="col s12 l1 right-align">
+                    <a onclick="removebutton();addrow()" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+                    </div>
                 </div>
             </div>
             <div id="newrows"></div>
         <!--next to text boxes-->
-        <a onclick="addrow()" class="btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+
         <!--<button class="btn-disabled waves-effect waves-light" type="submit" name="action">Submit
             <i class="material-icons right">send</i></button>-->
-        <button class="btn waves-effect waves-light" type="submit" name="action" align="center">Submit
+        <div class="col s12 center-align">
+            <button class="btn-large waves-effect waves-light center-align" type="submit" name="action">Submit
             <i class="material-icons right">send</i></button>
         </div>
-        </div>
+<!--        </div>
+        </div>-->
     </form>
     </div>
 </body>
