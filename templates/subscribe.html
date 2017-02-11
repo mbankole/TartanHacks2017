@@ -1,0 +1,86 @@
+<!doctype html>
+	<head>
+		<title>RainJeff - Subscribe</title>
+		<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/materialize.css') }}" media="screen,projection"/>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='js/materialize.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='js/init.js') }}"></script>
+		<meta name="theme-color" content="#607d8b">
+	</head>
+
+    <body background="{{ url_for('static', filename='images/bg.png') }}">
+        <nav class="blue-grey" role="navigation">
+            <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">RainJeff</a>
+				<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="/unsubscribe">Unsubscribe</a></li>
+                </ul>
+                <ul class="side-nav" id="mobile-demo">
+                    <li><a href="/unsubscribe">Unsubscribe</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="section no-pad-bot" id="index-banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col m12 l6">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="{{ url_for('static', filename='images/rainy-day.jpg') }}">
+                            </div>
+                            <div class="card-stacked">
+                                <div class="card-content flow-text">
+                                    <p>Ever go out and halfway through the day it starts raining? No more! Jeff will
+                                        send you an email at 00:00 CDT everyday with information on when it's coming
+                                        down based on your zipcode and specified amount of for-warning.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col m12 l6">
+                        <div class="card">
+                            <div class="row">
+                                <form class="" action="" method=post enctype=multipart/form-data>
+                                    <div class="container">
+                                        <br>
+                                        <h5 class="grey-text center">Signup</h5>
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <input id="name" type="text" class="validate" name=name>
+                                                <label for="name">Name</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s12 m6">
+                                                <input id="email" type="text" class="validate" name=email>
+                                                <label for="email">Email</label>
+                                            </div>
+                                            <div class="input-field col s12 m6">
+                                                <input id="zip" type="text" class="validate" name=zip>
+                                                <label for="zip">ZIP code</label>
+                                            </div>
+                                        </div>
+                                        <h6 class="grey-text">Timespan (hours)</h6>
+                                        <div class="row">
+                                            <p class="range-field col l8 s12">
+                                                <input type="range" id="range" min="0" max="48" name=range>
+                                            </p>
+                                            <div class="col s3">
+                                                <button class="btn waves-effect waves-light blue-grey lighten-3" type="submit" name="action" value="upload">Submit
+                                                <i class="material-icons right">send</i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+	  	    </div>
+        </div>
+	</body>
+</html>
+
