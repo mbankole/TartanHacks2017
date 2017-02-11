@@ -13,6 +13,7 @@ def find_location(locations, name):
 
 def find_paths(start_name, end_name, cnx):
     #takes in starting node, end node
+    print("path requested from " + start_name + " to " + end_name)
     locations = Database_Ops.get_locations(cnx)
     start = locations[find_location(locations, start_name)]
     paths = []
