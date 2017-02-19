@@ -8,10 +8,10 @@ __author__ = "Bolaji Bankole"
 
 
 config = {
-  'user': 'jeff',
-  'password': 'potato salad',
-  # 'host': '10.0.0.10',
-  'host': 'antel.mbankole.com',
+  'user': 'USER',
+  'password': 'PASS',
+  # 'host': '',
+  'host': 'HOST',
   'database': 'places',
   'raise_on_warnings': False,
 }
