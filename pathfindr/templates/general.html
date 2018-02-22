@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/materialize.css') }}" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/overlay.css') }}"/>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/materialize.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/init.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/input.js') }}"></script>
+	<meta name="theme-color" content="#607d8b">
+    <title>Shortest Path</title>
+    <script>
+
+    </script>
+</head>
+
+<body>
+    <nav class="" role="navigation">
+       <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo center">What's the Shortest Path Between my Classes?</a>
+       </div>
+    </nav>
+    <div class="container">
+<h5 class="center-align">Input Your Schedule:</h5>
+    <form class="" action="" method=post enctype=multipart/form-data>
+<!--        <div class="card">
+            <div class="card-content">-->
+<!--            <div class="row">
+               <div class="inputfield col s12 m4 l3">
+	   <input id="course1" type="text" class="validate" name="course1">
+                   <label for="course1">Course No.</label>
+               </div>
+-->               <div class="inputfield col s12 m7 l5">
+                    <input id="building1" type="text" class="validate" name=building1>
+                    <label for="building1">Building</label>
+               </div>
+<!--               <div class="inputfield col s12 m11 l3">
+                    <input id="room1" type="text" class="validate" name=room1>
+                    <label for="room1">Room</label>
+                </div>
+
+            </div>
+            <div class="row">
+               <div class="inputfield col s12 m4 l3">
+                   <input id="course2" type="text" class="validate" name="course2">
+                   <label for="course2">Course No.</label>
+               </div>
+-->               <div class="inputfield col s12 m7 l5">
+                     <input id="building2" type="text" class="validate" name=building2>
+                     <label for="building2">Building</label>
+               </div>
+<!--               <div class="inputfield col s12 m11 l3">
+                    <input id="room2" type="text" class="validate" name=room2>
+                    <label for="room2">Room</label>
+                </div>
+-->                <div id="button">
+                    <div class="col s12 m1 l1 right-align">
+                    <a onclick="removebutton();addrow()" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+                    </div>
+                </div>
+            </div>
+            <div id="newrows"></div>
+        <!--next to text boxes-->
+
+        <!--<button class="btn-disabled waves-effect waves-light" type="submit" name="action">Submit
+            <i class="material-icons right">send</i></button>-->
+        <div class="col s12 center-align">
+            <button id="send" class="btn-large waves-effect waves-light center-align send" type="submit" name="action">Submit
+            <i class="material-icons right">send</i></button>
+        </div>
+<!--        </div>
+        </div>-->
+    </form>
+    </div>
+
+<!--    <div class="overlay centered">
+            <div class="preloader-wrapper big active">
+      <div class="spinner-layer spinner-blue">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>-->
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/materialize.css') }}" media="screen,projection"/>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/materialize.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/init.js') }}"></script>
+	<meta name="theme-color" content="#607d8b">
+    <title>Map</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <script>
+        var key = "AIzaSyC4BNOQtUZzMup2nLP0VpXJconml9qcLw8";
+        var path = new Array();
+    </script>
+</head>
+<body>
+    <nav class="" role="navigation">
+       <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">PathFindr</a>
+       </div>
+    </nav>
+    <div class="col 12 center-align"><a href="/pathfindr" class="waves-effect waves-light btn"><i class="material-icons right">replay</i>Input Another Schedule</a></div>
+    {% for path in points %}
+        <script>
+            path.push(new Array());
+        </script>
+        {% for point in path %}
+            <script>
+                path[path.length - 1].push({lat: {{point.longitude}}, lng: {{point.latitude}}});
+            </script>
+        {% endfor %}
+    {% endfor %}
+    <div id="map"></div>
+    <script>
+        var colors = ['#f44336','#9c27b0','#2196f3','#009688','#8bc34a','#ff9800','#000000','#ffffff']
+
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 40.44259, lng: -79.9433333333333},
+          zoom: 17
+        });
+        for (var i = 0; i < path.length; i++) {
+            var route = path[i];
+            var routen = new google.maps.Polyline({
+              path: route,
+              geodesic: true,
+              strokeColor: colors[i],
+              strokeOpacity: 1.0,
+              strokeWeight: 2
+            });
+            routen.setMap(map);
+        };
+
+        console.log(path[0]);
+
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeaLhVyHwNPQZz0cFJYeeM6HjiwzJf38Y&callback=initMap">
+    </script>
+
+
+
+</body>
+</html>
